@@ -1,0 +1,63 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bulma/0.6.2/css/bulma.min.css"/>
+    <title>{{title}}</title>
+</head>
+<body>
+<style>
+
+      a{color:black;
+      line-height:20px;
+      }
+      #col2{
+      width:100%;
+      text-align:center;
+      }
+      #col1{
+      text-align:left;
+      }
+      h1{
+      height:100px;
+      }
+
+</style>
+
+<nav class="breadcrumb" aria-label="breadcrumbs">
+    <ul>
+        <li><a href="/">首页</a></li>
+        <li class="is-active"><a aria-current="page">{{title}}</a></li>
+    </ul>
+</nav>
+
+<div><h1 class='level-item is-size-1'><strong>{{title}}</strong></h1></div>
+{% for info in infos %}
+<div class="columns" id='col1'>
+    <div class="column is-one-quarter"></div>
+    <div class="column is-three-quarter"><a href='/info/{{info[0]}}' style="display:block;"
+                                            class='is-balck'>{{info[1]}}</a></div>
+</div>
+{% endfor %}
+
+<nav class="pagination" role="navigation" aria-label="pagination">
+    <a class="pagination-previous" href="/{{city}}/{{p}}">上一页</a>
+    <a class="pagination-next" href="/{{city}}/{{n}}">下一页</a>
+    <ul class="pagination-list">
+        {% for page in pages %}
+        {% if current == page %}
+        <li>
+            <a class="pagination-link is-current" aria-current="page">{{page}}</a>
+        </li>
+        {% else %}
+        <li>
+            <a class="pagination-link" href="/{{city}}/{{page}}">{{page}}</a>
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</nav>
+<br/>
+<br/>
+
+</body>
+</html>
+
